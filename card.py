@@ -31,3 +31,11 @@ class PowerCard(CardBase):
     def __init__(self, color, element, number, turn_effect, after_effect):
         assert(9 <= number <= 12)
         super().__init__(color, element, number, turn_effect, after_effect)
+
+class TurnPowerCard(PowerCard):
+    def __init__(self, color, element, number, turn_effect):
+        super().__init__(color, element, number, turn_effect, AfterEffect.NOOP)
+
+class AfterPowerCard(PowerCard):
+    def __init__(self, color, element, number, after_effect):
+        super().__init__(color, element, number, TurnEffect.NOOP, after_effect)

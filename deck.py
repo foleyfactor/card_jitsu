@@ -1,4 +1,4 @@
-from card import Card, PowerCard
+from card import Card, AfterPowerCard, TurnPowerCard
 from color import Color
 from effect import BanElementEffect
 from effect import DiscardOneColorEffect, DiscardElementEffect
@@ -38,12 +38,28 @@ standard_deck = [
     Card(Color.RED, Element.WATER, 2),
     Card(Color.RED, Element.WATER, 7),
     Card(Color.YELLOW, Element.WATER, 2),
-    PowerCard(Color.RED, Element.FIRE, 9, TurnEffect.NOOP, BanElementEffect(Element.SNOW)),
-    PowerCard(Color.BLUE, Element.FIRE, 9, SwapElementsTurnEffect(Element.WATER, Element.FIRE), AfterEffect.NOOP),
-    PowerCard(Color.YELLOW, Element.FIRE, 10, ReversalTurnEffect(), AfterEffect.NOOP),
-    PowerCard(Color.ORANGE, Element.FIRE, 10, TurnEffect.NOOP, DiscardElementEffect(Element.SNOW)),
-    PowerCard(Color.PURPLE, Element.FIRE, 11, TurnEffect.NOOP, DiscardOneColorEffect(Color.RED)),
-    PowerCard(Color.GREEN, Element.FIRE, 11, TurnEffect.NOOP, DiscardOneColorEffect(Color.YELLOW)),
-    PowerCard(Color.RED, Element.FIRE, 12, TurnEffect.NOOP, Plus2Effect()),
-    PowerCard(Color.BLUE, Element.FIRE, 12, TurnEffect.NOOP, Minus2Effect()),
+    AfterPowerCard(Color.RED, Element.FIRE, 9, BanElementEffect(Element.SNOW)),
+    TurnPowerCard(Color.BLUE, Element.FIRE, 9, SwapElementsTurnEffect(Element.WATER, Element.FIRE)),
+    TurnPowerCard(Color.YELLOW, Element.FIRE, 10, ReversalTurnEffect()),
+    AfterPowerCard(Color.ORANGE, Element.FIRE, 10, DiscardElementEffect(Element.SNOW)),
+    AfterPowerCard(Color.PURPLE, Element.FIRE, 11, DiscardOneColorEffect(Color.RED)),
+    AfterPowerCard(Color.GREEN, Element.FIRE, 11, DiscardOneColorEffect(Color.YELLOW)),
+    AfterPowerCard(Color.RED, Element.FIRE, 12, Plus2Effect()),
+    AfterPowerCard(Color.BLUE, Element.FIRE, 12, Minus2Effect()),
+    AfterPowerCard(Color.RED, Element.SNOW, 9, BanElementEffect(Element.WATER)),
+    TurnPowerCard(Color.BLUE, Element.SNOW, 9, SwapElementsTurnEffect(Element.FIRE, Element.SNOW)),
+    TurnPowerCard(Color.GREEN, Element.SNOW, 10, ReversalTurnEffect()),
+    AfterPowerCard(Color.GREEN, Element.SNOW, 10, DiscardElementEffect(Element.WATER)),
+    AfterPowerCard(Color.PURPLE, Element.SNOW, 11, DiscardOneColorEffect(Color.GREEN)),
+    AfterPowerCard(Color.YELLOW, Element.SNOW, 11, DiscardOneColorEffect(Color.PURPLE)),
+    AfterPowerCard(Color.ORANGE, Element.SNOW, 12, Plus2Effect()),
+    AfterPowerCard(Color.ORANGE, Element.SNOW, 12, Minus2Effect()),
+    AfterPowerCard(Color.RED, Element.WATER, 9, BanElementEffect(Element.FIRE)),
+    TurnPowerCard(Color.BLUE, Element.WATER, 9, SwapElementsTurnEffect(Element.SNOW, Element.WATER)),
+    TurnPowerCard(Color.YELLOW, Element.WATER, 10, ReversalTurnEffect()),
+    AfterPowerCard(Color.ORANGE, Element.WATER, 10, DiscardElementEffect(Element.FIRE)),
+    AfterPowerCard(Color.PURPLE, Element.WATER, 11, DiscardOneColorEffect(Color.BLUE)),
+    AfterPowerCard(Color.GREEN, Element.WATER, 11, DiscardOneColorEffect(Color.ORANGE)),
+    AfterPowerCard(Color.PURPLE, Element.WATER, 12, Plus2Effect()),
+    AfterPowerCard(Color.YELLOW, Element.WATER, 12, Minus2Effect()),
 ]
